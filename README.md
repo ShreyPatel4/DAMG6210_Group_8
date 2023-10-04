@@ -1,78 +1,34 @@
-# DAMG6210_Group_8
-HIPPA Compliant Database
+# Healthcare Tracker (HIPAA-Compliant Data Architecture)
+## Team 8:
+- Shrey Patel
+- Anoushka 
+- Yash Badani 
+- Raveena Patil 
+- Rutuja Patil 
 
-# Development of a HIPAA-Compliant Data Front and Database for Healthcare Middleware
+## Phase 1:
+**GIT LINK:** [ShreyPatel4/DAMG6210_Group_8: HIPPA Compliant Database](https://github.com/ShreyPatel4/DAMG6210_Group_8)
 
-**Project Start Date**: September 26, 2023
+## Overall:
+In the world of healthcare, doctors, patients, and insurers need a system that is both powerful and trustworthy. We're planning to build from the ground up, using PostgreSQL as our foundation. We'll design it to follow important rules, like HIPAA, and ensure it keeps everyone's data safe and accessible. Our approach will involve creating a smart database structure, setting up real-time responses for different user actions, and adding safety features to protect the data. In simple terms, we're building a reliable tech backbone for healthcare.
 
-## Phase 1: Topic and Objectives [3% of grade]
+## Objective:
+Design and implement a robust, HIPAA-compliant data architecture for medical applications, rooted in advanced SQL methodologies. At the nucleus of this design is a centralized relational database system (RDBMS), structured with a well-structured and optimized database schema to ensure data integrity and minimize redundancy. To manage dynamic interactions between patients, healthcare providers, and insurers, we'll employ SQL triggers and event-driven programming. Upon specific authentication events, these triggers will instantiate temporary views using complex JOIN operations, pulling data from multiple tables while ensuring data encapsulation. The use of B-tree and bitmap indexes will be pivotal in optimizing SELECT queries and enhancing data retrieval speeds. Stored procedures, fortified with parameterized queries, will encapsulate business logic, ensuring data operations are both secure and efficient. User-defined functions (UDFs) will be crafted to handle repetitive tasks, like data validation or transformation, ensuring a modular approach to data operations. To safeguard data integrity during operations, transaction control mechanisms will be stringently applied, ensuring each operation adheres to the ACID properties.
 
-**Date**: September 26, 2023
+## Deliverables:
+**Statement of the Chosen Topic:** A document detailing the choice to develop a robust, HIPAA-compliant data architecture using advanced SQL methodologies.
 
-**Objective**: 
-Decide on a database topic and establish the mission statement and mission objectives that the database will accomplish.
+### Mission Statement and Mission Objectives Document:
+- **Mission Statement:** To design and implement a state-of-the-art, HIPAA-compliant data architecture for medical applications, ensuring secure, efficient, and real-time data interactions.
+- **Mission Objectives:**
+  - Craft a well-structured and optimized database schema to ensure data integrity and minimize redundancy.
+  - Utilize SQL triggers for dynamic data interactions based on authentication events.
+  - Optimize data retrieval using advanced SQL techniques like B-tree and bitmap indexes.
+  - Implement stored procedures and UDFs for modular and secure data operations.
+  - Ensure all data operations uphold the ACID properties.
+  - Maintain full compliance with HIPAA standards throughout the design and implementation.
 
-**Deliverables**:
-1. Statement of the chosen topic.
-2. Mission statement and mission objectives document.
+**Acknowledgment of Learning Curve:** This project acknowledges the need to familiarize and master advanced SQL concepts, like B-tree indexing. While there's a learning curve involved, the team is committed to undertaking this learning and ensuring as much compliance to these advanced techniques as possible.
 
-**Outcome**: 
-A clear understanding of the project topic and the objectives to be achieved.
-
-## Phase 2: Database Design, Initial ERD [5% of grade]
-
-**Timeline**: [End Date]
-
-**Objective**: 
-Create an initial Entity-Relationship Diagram (ERD) depicting the database for the middleware system, allowing for data collection, processing, and reporting for healthcare and insurance providers.
-
-**Deliverables**:
-1. An initial ERD with a minimum of 10 entities.
-2. A database design document describing the business problems being addressed, list of all entities, their relationships, and key design decisions.
-
-**Outcome**: 
-An initial ERD and design document serving as the foundation for the subsequent development phases.
-
-## Phase 3: Final ERD [5% of grade]
-
-**Timeline**: [End Date]
-
-**Objective**: 
-Refine the initial ERD based on the instructor’s feedback, focusing on further ‘normalization’ of the database entities, reducing redundant data, and recognizing additional entities.
-
-**Deliverables**:
-1. A refined and final ERD.
-2. A brief description identifying the changes made to the initial ERD.
-
-**Outcome**: 
-A finalized ERD and an updated design document reflecting all modern design changes, ready for database implementation.
-
-## Phase 4: Database Implementation [7% of grade]
-
-**Timeline**: [End Date]
-
-**Objective**: 
-Implement the database design and enter a minimal amount of data using SQL scripts, Data Import Wizard, and/or stored procedures.
-
-**Deliverables**:
-1. SQL code implementing the database design.
-2. At least ten rows of data for each table.
-3. Implementation of specified database objects like stored procedures, views, triggers, constraints, indexes, etc.
-4. Data visualizations using Power BI/Tableau.
-
-**Outcome**: 
-A fully implemented and populated database, with data visualizations and optional GUI for CRUD operations.
-
-## Phase 5: Presentation [5% of grade]
-
-**Timeline**: [End Date]
-
-**Objective**: 
-Present the database design project to the class, showcasing all the developed components and functionalities.
-
-**Deliverables**:
-1. A PowerPoint slide deck highlighting the project.
-2. Design documents and the final ERD.
-3. Sample DDL statements for implementing the database.
-4. Data visualizations created using Power BI/Tableau.
-5. A live demo of the project displaying the database and the visualization layer.
+## Outcome:
+A clear and deep understanding of the project's aim to design a HIPAA-compliant data architecture, the specific technical objectives to be achieved, and the acknowledgment of the learning curve involved.
