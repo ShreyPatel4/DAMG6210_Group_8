@@ -1,7 +1,7 @@
 # Healthcare Tracker (HIPAA-Compliant Data Architecture)
 ## Team 8:
 - Shrey Patel
-- Anushka 
+- Anushka Paradkar
 - Yash Badani 
 - Raveena Patil 
 - Rutuja Patil 
