@@ -2,7 +2,7 @@
 ## Team 8:
 - Shrey Patel
 - Anushka Paradkar
-- Yash Badani 
+- Yash Badani
 - Raveena Patil 
 - Rutuja Patil 
 
