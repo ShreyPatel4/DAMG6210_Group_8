@@ -2,26 +2,26 @@ use HealthCareManagementSystem
 go
 INSERT INTO Patient (PatientID, SSN, FirstName, LastName, DateOfBirth, Gender, Email, Address, PhoneNumber, EmergencyContact, BloodType)
 VALUES
-('PAT001', '123-45-6789', 'John', 'Doe', '1990-01-01', 'Male', 'john.doe@email.com', '123 Main St', '555-1234', 'Jane Doe', 'A+'),
-('PAT002', '987-65-4321', 'Jane', 'Smith', '1985-05-15', 'Female', 'jane.smith@email.com', '456 Oak St', '555-5678', 'John Smith', 'B-'),
-('PAT003', '543-21-9876', 'Alice', 'Johnson', '1995-08-20', 'Female', 'alice.johnson@email.com', '789 Pine St', '555-8765', 'Bob Johnson', 'O+'),
-('PAT004', '654-32-1098', 'Michael', 'Williams', '1980-03-10', 'Male', 'michael.williams@email.com', '456 Maple St', '555-4321', 'Laura Williams', 'AB-'),
-('PAT005', '876-54-3210', 'Emily', 'Brown', '1992-11-05', 'Female', 'emily.brown@email.com', '789 Cedar St', '555-9876', 'Chris Brown', 'A-'),
-('PAT006', '234-56-7890', 'David', 'Jones', '1988-07-15', 'Male', 'david.jones@email.com', '123 Birch St', '555-2345', 'Sarah Jones', 'B+'),
-('PAT007', '567-89-0123', 'Sophia', 'Miller', '1975-04-25', 'Female', 'sophia.miller@email.com', '789 Elm St', '555-6789', 'Daniel Miller', 'O-'),
-('PAT008', '789-01-2345', 'Matthew', 'Davis', '1997-09-30', 'Male', 'matthew.davis@email.com', '456 Oak St', '555-8901', 'Olivia Davis', 'A+'),
-('PAT009', '210-98-7654', 'Olivia', 'Taylor', '1982-12-12', 'Female', 'olivia.taylor@email.com', '123 Pine St', '555-2109', 'William Taylor', 'AB+'),
-('PAT010', '432-10-9876', 'Daniel', 'Wilson', '1998-02-18', 'Male', 'daniel.wilson@email.com', '789 Maple St', '555-5432', 'Emma Wilson', 'O-'),
-('PAT011', '876-54-3210', 'Emma', 'Anderson', '1986-06-22', 'Female', 'emma.anderson@email.com', '456 Cedar St', '555-8765', 'James Anderson', 'B-'),
-('PAT012', '345-67-8901', 'Christopher', 'Harris', '1993-04-09', 'Male', 'christopher.harris@email.com', '789 Birch St', '555-3456', 'Jessica Harris', 'A+'),
-('PAT013', '987-65-4321', 'Mia', 'Moore', '1984-10-14', 'Female', 'mia.moore@email.com', '123 Elm St', '555-9876', 'Christopher Moore', 'O-'),
-('PAT014', '123-45-6789', 'William', 'Clark', '1991-08-07', 'Male', 'william.clark@email.com', '456 Pine St', '555-1234', 'Sophia Clark', 'A-'),
-('PAT015', '567-89-0123', 'Ava', 'White', '1980-01-30', 'Female', 'ava.white@email.com', '789 Maple St', '555-5678', 'Ethan White', 'AB+'),
-('PAT016', '876-54-3210', 'Ethan', 'Thomas', '1995-03-28', 'Male', 'ethan.thomas@email.com', '123 Cedar St', '555-8765', 'Lily Thomas', 'B-'),
-('PAT017', '210-98-7654', 'Lily', 'Brown', '1987-07-05', 'Female', 'lily.brown@email.com', '456 Elm St', '555-2109', 'Noah Brown', 'A+'),
-('PAT018', '432-10-9876', 'Noah', 'Jones', '1994-09-17', 'Male', 'noah.jones@email.com', '789 Oak St', '555-5432', 'Emily Jones', 'O-'),
-('PAT019', '654-32-1098', 'Grace', 'Miller', '1983-05-03', 'Female', 'grace.miller@email.com', '123 Birch St', '555-6543', 'Samuel Miller', 'AB-'),
-('PAT020', '876-54-3210', 'Samuel', 'Roberts', '1996-11-12', 'Male', 'samuel.roberts@email.com', '456 Cedar St', '555-8765', 'Olivia Roberts', 'B+');
+('PAT001', Convert(Binary(16),'123-45-6789'), 'John', 'Doe', '1990-01-01', 'Male', 'john.doe@email.com', '123 Main St', '555-1234', 'Jane Doe', 'A+'),
+('PAT002', Convert(Binary(16),'987-65-4321'), 'Jane', 'Smith', '1985-05-15', 'Female', 'jane.smith@email.com', '456 Oak St', '555-5678', 'John Smith', 'B-'),
+('PAT003', Convert(Binary(16),'543-21-9876'), 'Alice', 'Johnson', '1995-08-20', 'Female', 'alice.johnson@email.com', '789 Pine St', '555-8765', 'Bob Johnson', 'O+'),
+('PAT004', Convert(Binary(16),'654-32-1098'), 'Michael', 'Williams', '1980-03-10', 'Male', 'michael.williams@email.com', '456 Maple St', '555-4321', 'Laura Williams', 'AB-'),
+('PAT005', Convert(Binary(16),'876-54-3210'), 'Emily', 'Brown', '1992-11-05', 'Female', 'emily.brown@email.com', '789 Cedar St', '555-9876', 'Chris Brown', 'A-'),
+('PAT006', Convert(Binary(16),'234-56-7890'), 'David', 'Jones', '1988-07-15', 'Male', 'david.jones@email.com', '123 Birch St', '555-2345', 'Sarah Jones', 'B+'),
+('PAT007', Convert(Binary(16),'567-89-0123'), 'Sophia', 'Miller', '1975-04-25', 'Female', 'sophia.miller@email.com', '789 Elm St', '555-6789', 'Daniel Miller', 'O-'),
+('PAT008', Convert(Binary(16),'789-01-2345'), 'Matthew', 'Davis', '1997-09-30', 'Male', 'matthew.davis@email.com', '456 Oak St', '555-8901', 'Olivia Davis', 'A+'),
+('PAT009', Convert(Binary(16),'210-98-7654'), 'Olivia', 'Taylor', '1982-12-12', 'Female', 'olivia.taylor@email.com', '123 Pine St', '555-2109', 'William Taylor', 'AB+'),
+('PAT010', Convert(Binary(16),'432-10-9876'), 'Daniel', 'Wilson', '1998-02-18', 'Male', 'daniel.wilson@email.com', '789 Maple St', '555-5432', 'Emma Wilson', 'O-'),
+('PAT011', Convert(Binary(16),'876-54-3210'), 'Emma', 'Anderson', '1986-06-22', 'Female', 'emma.anderson@email.com', '456 Cedar St', '555-8765', 'James Anderson', 'B-'),
+('PAT012', Convert(Binary(16),'345-67-8901'), 'Christopher', 'Harris', '1993-04-09', 'Male', 'christopher.harris@email.com', '789 Birch St', '555-3456', 'Jessica Harris', 'A+'),
+('PAT013', Convert(Binary(16),'987-65-4321'), 'Mia', 'Moore', '1984-10-14', 'Female', 'mia.moore@email.com', '123 Elm St', '555-9876', 'Christopher Moore', 'O-'),
+('PAT014', Convert(Binary(16),'123-45-6789'), 'William', 'Clark', '1991-08-07', 'Male', 'william.clark@email.com', '456 Pine St', '555-1234', 'Sophia Clark', 'A-'),
+('PAT015', Convert(Binary(16),'567-89-0123'), 'Ava', 'White', '1980-01-30', 'Female', 'ava.white@email.com', '789 Maple St', '555-5678', 'Ethan White', 'AB+'),
+('PAT016', Convert(Binary(16),'876-54-3210'), 'Ethan', 'Thomas', '1995-03-28', 'Male', 'ethan.thomas@email.com', '123 Cedar St', '555-8765', 'Lily Thomas', 'B-'),
+('PAT017', Convert(Binary(16),'210-98-7654'), 'Lily', 'Brown', '1987-07-05', 'Female', 'lily.brown@email.com', '456 Elm St', '555-2109', 'Noah Brown', 'A+'),
+('PAT018', Convert(Binary(16),'432-10-9876'), 'Noah', 'Jones', '1994-09-17', 'Male', 'noah.jones@email.com', '789 Oak St', '555-5432', 'Emily Jones', 'O-'),
+('PAT019', Convert(Binary(16),'654-32-1098'), 'Grace', 'Miller', '1983-05-03', 'Female', 'grace.miller@email.com', '123 Birch St', '555-6543', 'Samuel Miller', 'AB-'),
+('PAT020', Convert(Binary(16),'876-54-3210'), 'Samuel', 'Roberts', '1996-11-12', 'Male', 'samuel.roberts@email.com', '456 Cedar St', '555-8765', 'Olivia Roberts', 'B+');
 
 
 
@@ -73,28 +73,28 @@ VALUES
 ('VIS020', '2024-08-10 15:30:00', 'Pregancy Checkup', 'Scheduled', 'DOC020', 'PAT020');
 
 
-INSERT INTO Treatment (TreatmentID, TreatmentName, TreatmentFees, VisitID, Admit_Flag)
+INSERT INTO Treatment (TreatmentID, TreatmentName, TreatmentFees, VisitID, Admit_Flag,Notes)
 VALUES
-('TRT001', 'Cardiac Angiography', 500.00, 'VIS001', 'N'),
-('TRT002', 'Knee Joint Operation', 400.00, 'VIS002', 'Y'),
-('TRT003', 'Antibiotics for Fever', 50.00, 'VIS003', 'N'),
-('TRT004', 'Eye Prescription Glasses', 300.00, 'VIS004', 'N'),
-('TRT005', 'Topical Cream for Skin Rashes', 20.00, 'VIS005', 'N'),
-('TRT006', 'Anti-seizure Medication', 150.00, 'VIS006', 'N'),
-('TRT007', 'Cardiac Stress Test', 200.00, 'VIS007', 'N'),
-('TRT008', 'Gastrointestinal Endoscopy', 500.00, 'VIS008', 'Y'),
-('TRT009', 'Orthopedic Physical Therapy', 400.00, 'VIS009', 'Y'),
-('TRT010', 'Urological Tests', 80.00, 'VIS010', 'N'),
-('TRT011', 'Hormone Replacement Therapy', 600.00, 'VIS011', 'N'),
-('TRT012', 'Eye Care Follow-up Consultation', 50.00, 'VIS012', 'N'),
-('TRT013', 'Pulmonary Function Tests', 300.00, 'VIS013', 'N'),
-('TRT014', 'Rheumatoid Arthritis Medication', 200.00, 'VIS014', 'N'),
-('TRT015', 'Cardiac Medication', 100.00, 'VIS015', 'N'),
-('TRT016', 'Nephrology Consultation', 50.00, 'VIS016', 'N'),
-('TRT017', 'Dermatology Cream for Rosacea', 25.00, 'VIS017', 'N'),
-('TRT018', 'Neurological Memory Tests', 150.00, 'VIS018', 'N'),
-('TRT019', 'Chemotherapy Session', 500.00, 'VIS019', 'Y'),
-('TRT020', 'Obstetric Ultrasound', 150.00, 'VIS020', 'N');
+('TRT001', 'Cardiac Angiography', 500.00, 'VIS001', 'N',''),
+('TRT002', 'Knee Joint Operation', 400.00, 'VIS002', 'Y','Room is Available, Can be admitted'),
+('TRT003', 'Antibiotics for Fever', 50.00, 'VIS003', 'N',''),
+('TRT004', 'Eye Prescription Glasses', 300.00, 'VIS004', 'N',''),
+('TRT005', 'Topical Cream for Skin Rashes', 20.00, 'VIS005', 'N',''),
+('TRT006', 'Anti-seizure Medication', 150.00, 'VIS006', 'N',''),
+('TRT007', 'Cardiac Stress Test', 200.00, 'VIS007', 'N',''),
+('TRT008', 'Gastrointestinal Endoscopy', 500.00, 'VIS008', 'Y','Room is Available, Can be admitted'),
+('TRT009', 'Orthopedic Physical Therapy', 400.00, 'VIS009', 'Y','Room is Available, Can be admitted'),
+('TRT010', 'Urological Tests', 80.00, 'VIS010', 'N',''),
+('TRT011', 'Hormone Replacement Therapy', 600.00, 'VIS011', 'N',''),
+('TRT012', 'Eye Care Follow-up Consultation', 50.00, 'VIS012', 'N',''),
+('TRT013', 'Pulmonary Function Tests', 300.00, 'VIS013', 'N',''),
+('TRT014', 'Rheumatoid Arthritis Medication', 200.00, 'VIS014', 'N',''),
+('TRT015', 'Cardiac Medication', 100.00, 'VIS015', 'N',''),
+('TRT016', 'Nephrology Consultation', 50.00, 'VIS016', 'N',''),
+('TRT017', 'Dermatology Cream for Rosacea', 25.00, 'VIS017', 'N',''),
+('TRT018', 'Neurological Memory Tests', 150.00, 'VIS018', 'N',''),
+('TRT019', 'Chemotherapy Session', 500.00, 'VIS019', 'Y','Room is Available, Can be admitted'),
+('TRT020', 'Obstetric Ultrasound', 150.00, 'VIS020', 'N','');
 
 INSERT INTO Prescription (PrescriptionID, MedicineName, TreatmentID, PrescriptionDate, Dosage)
 VALUES
@@ -190,7 +190,7 @@ VALUES
 ('PAT019',    'PLA09'),
 ('PAT020',    'PLA09')
 
-
+-- sp
 go
 Exec InsertAdmissionFromTreatment
 
@@ -204,4 +204,9 @@ exec InsertPaymentData
 
 go
 exec inserttreatmenthistory
+
+go
+
+
+
 

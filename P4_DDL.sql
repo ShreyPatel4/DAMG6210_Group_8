@@ -1,11 +1,22 @@
-create database HealthCareManagementSystem 
+create  database HealthCareManagementSystem
 go
-use HealthCareManagementSystem 
+use  HealthCareManagementSystem
 go
+
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'u$Vp2#9XqF!z';
+go 
+CREATE CERTIFICATE PatientSSNCertificate
+WITH SUBJECT = 'Patient SSN Encryption';
+
+-- Create a symmetric key for SSN encryption
+CREATE SYMMETRIC KEY PatientSSNSymmetricKey
+WITH ALGORITHM = AES_256
+ENCRYPTION BY CERTIFICATE PatientSSNCertificate;
+
 
 CREATE TABLE Patient (
     PatientID VARCHAR(50) PRIMARY KEY,
-    SSN VARCHAR(20),
+    SSN VARBINARY(MAX),
     FirstName VARCHAR(50),
     LastName VARCHAR(50),
     DateOfBirth DATE,
@@ -16,6 +27,17 @@ CREATE TABLE Patient (
     EmergencyContact VARCHAR(50),
     BloodType VARCHAR(10) CHECK (BloodType IN ('O-', 'O+', 'AB-', 'AB+', 'B-', 'B+', 'A-', 'A+'))
 );
+
+OPEN SYMMETRIC KEY PatientSSNSymmetricKey
+DECRYPTION BY CERTIFICATE PatientSSNCertificate;
+
+UPDATE Patient
+SET 
+    SSN = EncryptByKey(Key_GUID('PatientSSNSymmetricKey'), SSN);
+GO
+
+CLOSE SYMMETRIC KEY PatientSSNSymmetricKey;
+GO
 
 CREATE TABLE Doctor (
     DoctorID VARCHAR(50) PRIMARY KEY,
@@ -41,7 +63,7 @@ CREATE TABLE Treatment (
     TreatmentName VARCHAR(255),
     TreatmentFees DECIMAL(10, 2),
     VisitID VARCHAR(50) FOREIGN KEY REFERENCES Visit(VisitID),
-    Admit_Flag CHAR(1) CHECK (Admit_Flag IN ('N', 'Y','Hold')),
+    Admit_Flag CHAR(1) CHECK (Admit_Flag IN ('N', 'Y')),
     Notes Nvarchar(100)
 );
 
@@ -506,54 +528,63 @@ END;
 go
 
 
-CREATE PROCEDURE InsertTreatment
-    @VisitID VARCHAR(50),
-    @Admit_Flag CHAR(1),
-    @TreatmentFees DECIMAL(10,2)
-AS
-BEGIN
-    DECLARE @TreatmentID VARCHAR(50);
-    DECLARE @Note NVARCHAR(255) = '';
-    DECLARE @RoomID VARCHAR(50);
+CREATE PROCEDURE InsertTreatment    
+    @VisitID VARCHAR(50),    
+    @Admit_Flag CHAR(1),    
+    @TreatmentFees DECIMAL(10,2)    
+AS    
+BEGIN   
+  
 
-    -- Generate a new TreatmentID
-    SELECT @TreatmentID = 'TRT0' + CAST(ISNULL(MAX(CAST(SUBSTRING(TreatmentID, 4, LEN(TreatmentID) - 3) AS INT)), 0) + 1 AS VARCHAR)
-    FROM Treatment;
-
-    DECLARE @TreatmentName NVARCHAR(50);
-    SELECT @TreatmentName = Purpose FROM Visit WHERE VisitID = @VisitID;
-    SET @TreatmentName = @TreatmentName + ' Treatment';
-
-    -- Check for room availability if Admit_Flag is 'Y'
-    IF @Admit_Flag = 'Y'
-    BEGIN
-        -- Get the available room
-        SELECT TOP 1 @RoomID = RoomID
-        FROM Room
-        WHERE RoomStatus = 'Available'
-        ORDER BY RoomID;
-
-       -- If a room is available, insert into the Treatment table
-      IF @RoomID IS NULL
-      BEGIN
-           SET @Note = 'Room not available.';
-
-            INSERT INTO Treatment (TreatmentID, TreatmentName, TreatmentFees, VisitID, Admit_Flag, Notes)
-            VALUES (@TreatmentID, @TreatmentName, @TreatmentFees, @VisitID, @Admit_Flag, @Note);
-           
-        END
-       
-    END
-    ELSE
-    BEGIN
-        -- If Admit_Flag is 'N', simply insert into the Treatment table
-        INSERT INTO Treatment (TreatmentID, TreatmentName, TreatmentFees, VisitID, Admit_Flag,Notes)
-        VALUES (@TreatmentID, @TreatmentName, @TreatmentFees, @VisitID, @Admit_Flag,'');
-
-        
-    END
+    DECLARE @TreatmentID VARCHAR(50);    
+    DECLARE @Note NVARCHAR(255) = '';    
+    DECLARE @RoomID VARCHAR(50);    
     
-END;
+    -- Generate a new TreatmentID    
+    SELECT @TreatmentID = 'TRT0' + CAST(ISNULL(MAX(CAST(SUBSTRING(TreatmentID, 4, LEN(TreatmentID) - 3) AS INT)), 0) + 1 AS VARCHAR)    
+    FROM Treatment;    
+  
+ select @TreatmentID  
+  
+    DECLARE @TreatmentName NVARCHAR(50);    
+    SELECT @TreatmentName = Purpose FROM Visit WHERE VisitID = @VisitID;    
+    SET @TreatmentName = @TreatmentName + ' Treatment';    
+ select @TreatmentName  
+    -- Check for room availability if Admit_Flag is 'Y'    
+    IF @Admit_Flag = 'Y'    
+    BEGIN    
+        -- Get the available room    
+        SELECT TOP 1 @RoomID = RoomID    
+        FROM Room    
+        WHERE RoomStatus = 'Available'    
+        ORDER BY RoomID;    
+        -- If a room is available, insert into the Treatment table    
+        IF @RoomID IS NULL    
+        BEGIN    
+			
+			SET @Note = 'Room not available.';          
+        END   
+		ELSE  
+		BEGIN  
+  
+		set @Note='';  
+  
+		END  
+     INSERT INTO Treatment (TreatmentID, TreatmentName, TreatmentFees, VisitID, Admit_Flag, Notes)    
+     VALUES (@TreatmentID, @TreatmentName, @TreatmentFees, @VisitID, @Admit_Flag, @Note);    
+           
+    END    
+    ELSE    
+    BEGIN    
+        -- If Admit_Flag is 'N', simply insert into the Treatment table    
+        INSERT INTO Treatment (TreatmentID, TreatmentName, TreatmentFees, VisitID, Admit_Flag,Notes)    
+        VALUES (@TreatmentID, @TreatmentName, @TreatmentFees, @VisitID, @Admit_Flag,'');    
+   
+    END    
+    
+        
+END;  
+  
 
 
 
@@ -582,6 +613,7 @@ BEGIN
 END
 
 go
+
 CREATE VIEW MonthlySummaryView AS
 SELECT
     Year,
@@ -714,32 +746,6 @@ BEGIN
 END;
 
 go
-
-CREATE NONCLUSTERED INDEX IX_Visit_DoctorID
-ON Visit (DoctorID);
-
-
-CREATE NONCLUSTERED INDEX IX_Visit_PatientID
-ON Visit (PatientID);
-
-
-CREATE NONCLUSTERED INDEX IX_Bill_VisitID
-ON Bill (VisitID);
-
-CREATE NONCLUSTERED INDEX IX_Admission_TreatmentID
-ON Admission (TreatmentID);
-
-go
-
-
-
-
-
-
-
-
-
-
 
 
 
