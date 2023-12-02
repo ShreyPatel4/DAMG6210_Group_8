@@ -567,7 +567,7 @@ BEGIN
 		ELSE  
 		BEGIN  
   
-		set @Note='';  
+		set @Note='Room is Available, Can be admitted';  
   
 		END  
      INSERT INTO Treatment (TreatmentID, TreatmentName, TreatmentFees, VisitID, Admit_Flag, Notes)    
@@ -746,6 +746,21 @@ BEGIN
 END;
 
 go
+
+
+
+CREATE NONCLUSTERED INDEX IX_Visit_DoctorID
+ON Visit (DoctorID);
+
+CREATE NONCLUSTERED INDEX IX_Visit_PatientID
+ON Visit (PatientID);
+
+
+CREATE NONCLUSTERED INDEX IX_Bill_VisitID
+ON Bill (VisitID);
+
+CREATE NONCLUSTERED INDEX IX_Admission_TreatmentID
+ON Admission (TreatmentID);
 
 
 
